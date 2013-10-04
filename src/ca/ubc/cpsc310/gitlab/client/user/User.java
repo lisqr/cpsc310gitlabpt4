@@ -11,7 +11,7 @@ public class User implements IUser {
 	private static final long serialVersionUID = -4678920906536621479L;
 	
 	private List<ProductItem> shoppingCart = new ArrayList<ProductItem>();
-	private List<ProductItem> wishList = new ArrayList<ProductItem>();
+	private List<ProductItem> wishList2 = new ArrayList<ProductItem>();
 	
 	private String name;
 	private String language;
@@ -37,7 +37,7 @@ public class User implements IUser {
 
 	@Override
 	public List<ProductItem> getWishList() {
-		return wishList;
+		return wishList2;
 
 	}
 
@@ -63,13 +63,13 @@ public class User implements IUser {
 	@Override
 	public void addItemToWishList(ProductItem o) {
 
-		this.wishList.add(o);
+		this.wishList2.add(o);
 		
 	}
 	@Override
 	
 	public void removeItemFromWishList(ProductItem o) {
-		this.wishList.remove(o);
+		this.wishList2.remove(o);
 	}
 	
 	@Override
