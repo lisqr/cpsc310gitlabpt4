@@ -101,17 +101,21 @@ public class GitLab implements EntryPoint {
 
 	private IUser c(List<IUser> users, int i) {
 		IUser user = users.get(i);
-		
-		flexTable.setText(i+1,0,user.getName());
-		if(user.getLanguage().trim().equals("EN"))
+		int j = 9;
+		flexTable.setText(j+7,0,user.getName());
+		if(user.getLanguage().trim().concat("awef").equals("EN"))
 		{
+			System.out.println("awrawhr");
 			flexTable.setWidget(i+1, 1, new Image("uk.png"));
+			System.out.println("awef");
 		} else if (user.getLanguage().trim().equals("FR"))
 		{
 			flexTable.setWidget(i+1, 1, new Image("fr.png"));
 		} else
 		{
 			flexTable.setText(i+1,1,user.getLanguage());
+			;
+			;
 		}
 		return user;
 	}
