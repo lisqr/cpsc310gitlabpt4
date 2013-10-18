@@ -89,24 +89,24 @@ public class GitLab implements EntryPoint {
 		flexTable.setText(0,3, "Wish List Size");
 		flexTable.setStyleName("centered-table", true);
 		
-		for(int i=0; i < users.size(); i++)
+		for(int i=1; i < users.size(); i++)
 		{
 		
 			IUser user = users.get(i);
 			
-			flexTable.setText(i+1,0,user.getName());
-			if(user.getLanguage().trim().equals("EN"))
-			{
-				flexTable.setWidget(i+1, 1, new Image("uk.png"));
-			} else if (user.getLanguage().trim().equals("FR"))
+			flexTable.setText(i+2,0,user.getName());
+			if(user.getLanguage().trim().equals("FRE"))
 			{
 				flexTable.setWidget(i+1, 1, new Image("fr.png"));
+			} else if (user.getLanguage().trim().equals("ENG"))
+			{
+				flexTable.setWidget(i+2, 1, new Image("uk.png"));
 			} else
 			{
 				flexTable.setText(i+1,1,user.getLanguage());
 			}
 			
-			flexTable.setText(i+1,2,String.valueOf(user.getShoppingCart().size()));
+			flexTable.setText(i+2,2,String.valueOf(user.getShoppingCart().size()));
 			
 			flexTable.setText(i+1,3,String.valueOf(user.getWishList().size()));
 		}
