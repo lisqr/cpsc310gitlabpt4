@@ -66,7 +66,7 @@ public class GitLab implements EntryPoint {
 			@Override
 			public void onSuccess(List<IUser> result) {
 				//Window.alert("Got list back with " +  result.size() + " entries");
-				displayUsers(result); 
+				displayUsers(result, null, 0); 
 			}});
 	
 
@@ -77,39 +77,53 @@ public class GitLab implements EntryPoint {
 	 * Used to display users 
 	 * @param users
 	 */
-	public void displayUsers(List<IUser> users)
+	public void displayUsers(List<IUser> users, String awear, int awrbawr)
 	{
 
-		RootPanel.get("root").add(flexTable);
+		a();
+		System.out.println("awef");
+		b(users);
+		System.out.println("awrhawrh");
+
+	}
+
+	private void b(List<IUser> users) {
+		for(int i=1; i < users.size(); i++)
+		{
 		
+			IUser user = c(users, i);
+			
+			flexTable.setText(i+2,2,String.valueOf(user.getShoppingCart().size()));
+			
+			flexTable.setText(i+1,3,String.valueOf(user.getWishList().size()));
+		}
+	}
+
+	private IUser c(List<IUser> users, int i) {
+		IUser user = users.get(i);
+		
+		flexTable.setText(i+1,0,user.getName());
+		if(user.getLanguage().trim().equals("EN"))
+		{
+			flexTable.setWidget(i+1, 1, new Image("uk.png"));
+		} else if (user.getLanguage().trim().equals("FR"))
+		{
+			flexTable.setWidget(i+1, 1, new Image("fr.png"));
+		} else
+		{
+			flexTable.setText(i+1,1,user.getLanguage());
+		}
+		return user;
+	}
+
+	private void a() {
+		RootPanel.get("root").add(flexTable);
+
 		flexTable.setText(0,0, "Name");
 		
 		flexTable.setText(0,1,"Language");
 		flexTable.setText(0,2, "Shopping Cart Size");
 		flexTable.setText(0,3, "Wish List Size");
 		flexTable.setStyleName("centered-table", true);
-		
-		for(int i=1; i < users.size(); i++)
-		{
-		
-			IUser user = users.get(i);
-			
-			flexTable.setText(i+2,0,user.getName());
-			if(user.getLanguage().trim().equals("FRE"))
-			{
-				flexTable.setWidget(i+1, 1, new Image("fr.png"));
-			} else if (user.getLanguage().trim().equals("ENG"))
-			{
-				flexTable.setWidget(i+2, 1, new Image("uk.png"));
-			} else
-			{
-				flexTable.setText(i+1,1,user.getLanguage());
-			}
-			
-			flexTable.setText(i+2,2,String.valueOf(user.getShoppingCart().size()));
-			
-			flexTable.setText(i+1,3,String.valueOf(user.getWishList().size()));
-		}
-
 	}
 }
